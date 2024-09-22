@@ -43,9 +43,11 @@ public class JobTest {
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//        String testString = job1.toString();
-//        assertEquals(testString.charAt(0), System.lineSeparator());
-//        assertEquals(testString.charAt(testString.length()), System.lineSeparator());
+        String[] jobArray = job1.toString().split("\n");
+
+        assertEquals( jobArray[0], "\r");
+        assertEquals( jobArray[jobArray.length - 1], "\r");
+
         assertTrue(job1.toString().startsWith(System.lineSeparator()));
         assertTrue(job1.toString().endsWith(System.lineSeparator()));
 
@@ -54,22 +56,26 @@ public class JobTest {
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertTrue(job1.toString().contains("ID: "));
-        assertTrue(job1.toString().contains("Name: Product tester"));
-        assertTrue(job1.toString().contains("Employer: ACME"));
-        assertTrue(job1.toString().contains("Location: Desert"));
-        assertTrue(job1.toString().contains("Position Type: Quality control"));
-        assertTrue(job1.toString().contains("Core Competency: Persistence"));
+        String[] jobArray = job1.toString().split("\n");
+
+        assertEquals(jobArray[1], "ID: " + job1.getId());
+        assertEquals(jobArray[2], "Name: Product tester");
+        assertEquals(jobArray[3], "Employer: ACME");
+        assertEquals(jobArray[4], "Location: Desert");
+        assertEquals(jobArray[5], "Position Type: Quality control");
+        assertEquals(jobArray[6], "Core Competency: Persistence");
     }
 
     @Test
     public void testToStringHandlesEmptyField() {
         Job job1 = new Job();
-        assertTrue(job1.toString().contains("ID: "));
-        assertTrue(job1.toString().contains("Name: Data not available"));
-        assertTrue(job1.toString().contains("Employer: Data not available"));
-        assertTrue(job1.toString().contains("Location: Data not available"));
-        assertTrue(job1.toString().contains("Position Type: Data not available"));
-        assertTrue(job1.toString().contains("Core Competency: Data not available"));
+        String[] jobArray = job1.toString().split("\n");
+
+        assertEquals(jobArray[1], "ID: " + job1.getId());
+        assertEquals(jobArray[2], "Name: Data not available");
+        assertEquals(jobArray[3], "Employer: Data not available");
+        assertEquals(jobArray[4], "Location: Data not available");
+        assertEquals(jobArray[5], "Position Type: Data not available");
+        assertEquals(jobArray[6], "Core Competency: Data not available");
     }
 }
