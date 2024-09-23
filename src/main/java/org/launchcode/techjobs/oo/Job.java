@@ -98,12 +98,12 @@ public class Job {
         if (coreCompetency == null || coreCompetency.getValue().isEmpty()) {coreCompetency = new CoreCompetency("Data not available");}
 
         return System.lineSeparator() +
-                "ID: " + id + "\n" +
-                "Name: " + name + "\n" +
-                "Employer: " + employer + "\n" +
-                "Location: " + location + "\n" +
-                "Position Type: " + positionType + "\n" +
-                "Core Competency: " + coreCompetency + "\n" +
+                "ID: " + id + System.lineSeparator() +
+                "Name: " + name + System.lineSeparator() +
+                "Employer: " + employer + System.lineSeparator() +
+                "Location: " + location + System.lineSeparator() +
+                "Position Type: " + positionType + System.lineSeparator() +
+                "Core Competency: " + coreCompetency +
                 System.lineSeparator();
     }
 
