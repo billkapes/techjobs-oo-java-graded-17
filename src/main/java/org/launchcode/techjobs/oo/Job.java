@@ -86,7 +86,7 @@ public class Job {
 
     @Override
     public String toString() {
-        if (name == null || name.isEmpty()) {name = "Data not available";}
+        if (name == null) {name = "Data not available";}
         if (employer == null || employer.getValue().isEmpty()) {employer = new Employer("Data not available");}
         if (location == null || location.getValue().isEmpty()) {location = new Location("Data not available");}
         if (positionType == null || positionType.getValue().isEmpty()) {positionType = new PositionType("Data not available");}
