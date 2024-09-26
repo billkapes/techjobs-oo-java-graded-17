@@ -43,14 +43,13 @@ public class JobTest {
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
         int length = job1.toString().length();
+        String beginningOfString = job1.toString().substring(0,2);
+        String endOfString = job1.toString().substring(length - 2, length);
 
-        //assertEquals(job1.toString().substring(0,2), System.lineSeparator());
-        //assertEquals(job1.toString().substring(length - 2, length), System.lineSeparator());
-
-        assertTrue(job1.toString().startsWith(System.lineSeparator()));
-        assertTrue(job1.toString().endsWith(System.lineSeparator()));
-
+        assertEquals(beginningOfString, System.lineSeparator());
+        assertEquals(endOfString, System.lineSeparator());
     }
 
     @Test
